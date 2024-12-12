@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1pynidm75s00"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_mvcbg"]
+[ext_resource type="PackedScene" uid="uid://boytcxh1qro3l" path="res://scenes/weapons/sword_debug_weapon.tscn" id="2_27hx2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ckpe6"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jnck"]
+size = Vector2(14, 14)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_mvcbg")
+
+[node name="WeaponPoint" type="Marker2D" parent="."]
+
+[node name="SwordDebugWeapon" parent="WeaponPoint" instance=ExtResource("2_27hx2")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.17233e-07, 4.17233e-07)
+texture = SubResource("PlaceholderTexture2D_ckpe6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8jnck")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

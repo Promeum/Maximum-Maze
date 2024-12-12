@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://kkc8nscf63ds"]
+
+[ext_resource type="Script" path="res://scenes/cells/cell.gd" id="1_7v7fj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a6kjn"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62j5a"]
+size = Vector2(32, 32)
+
+[node name="Cell" type="Sprite2D"]
+texture_filter = 1
+texture_repeat = 1
+texture = SubResource("PlaceholderTexture2D_a6kjn")
+script = ExtResource("1_7v7fj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_62j5a")

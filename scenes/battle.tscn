@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://cq3qhyoiica44"]
+
+[ext_resource type="Script" path="res://scenes/battle.gd" id="1_63ir4"]
+[ext_resource type="PackedScene" uid="uid://dh14wmw2ruodt" path="res://scenes/player_battle.tscn" id="2_docfo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v88ew"]
+size = Vector2(1280, 768)
+
+[sub_resource type="Curve2D" id="Curve2D_sbd1j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 230, 200, 0, 0, 0, 0, 230, 316, 0, 0, 0, 0, 230, 433, 0, 0, 0, 0, 230, 550, 0, 0, 0, 0, 230, 700)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_4wiuv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 460, 200, 0, 0, 0, 0, 460, 316, 0, 0, 0, 0, 460, 433, 0, 0, 0, 0, 460, 550, 0, 0, 0, 0, 460, 700)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_mbpf8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 691, 200, 0, 0, 0, 0, 691, 316, 0, 0, 0, 0, 691, 433, 0, 0, 0, 0, 691, 550, 0, 0, 0, 0, 691, 700)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_1f6oi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 921, 200, 0, 0, 0, 0, 921, 316, 0, 0, 0, 0, 921, 433, 0, 0, 0, 0, 921, 550, 0, 0, 0, 0, 921, 700)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_iqu6i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 230, 550, 0, 0, 0, 0, 460, 550, 0, 0, 0, 0, 691, 550, 0, 0, 0, 0, 921, 550)
+}
+point_count = 4
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_63ir4")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.286275, 1, 0.286275, 1)
+position = Vector2(576, 320)
+texture = SubResource("PlaceholderTexture2D_v88ew")
+
+[node name="BulletContainer" type="Node" parent="."]
+
+[node name="BulletContainer1" type="Node" parent="BulletContainer"]
+
+[node name="BulletContainer2" type="Node" parent="BulletContainer"]
+
+[node name="BulletContainer3" type="Node" parent="BulletContainer"]
+
+[node name="BulletContainer4" type="Node" parent="BulletContainer"]
+
+[node name="BulletPaths" type="Node" parent="."]
+
+[node name="BulletPath1" type="Path2D" parent="BulletPaths"]
+curve = SubResource("Curve2D_sbd1j")
+
+[node name="BulletPath2" type="Path2D" parent="BulletPaths"]
+curve = SubResource("Curve2D_4wiuv")
+
+[node name="BulletPath3" type="Path2D" parent="BulletPaths"]
+curve = SubResource("Curve2D_mbpf8")
+
+[node name="BulletPath4" type="Path2D" parent="BulletPaths"]
+curve = SubResource("Curve2D_1f6oi")
+
+[node name="PlayerPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_iqu6i")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Player" parent="." instance=ExtResource("2_docfo")]
+position = Vector2(-296, 544)
+scale = Vector2(7, 7)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

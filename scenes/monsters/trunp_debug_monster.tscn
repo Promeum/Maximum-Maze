@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://crjhxupp1x5b4"]
+
+[ext_resource type="Script" path="res://scenes/monsters/trunp_debug_monster.gd" id="1_m03gb"]
+[ext_resource type="Texture2D" uid="uid://f063p40sjiyc" path="res://assets/debug_assets/trunp_debug_monster.png" id="2_hq8qa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8l61"]
+size = Vector2(14, 14)
+
+[node name="TrunpDebugMonster" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_m03gb")
+type = "trunp_debug_monster"
+health = 3
+strength = 2
+weapon_type = "sword_debug_weapon"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hq8qa")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_r8l61")

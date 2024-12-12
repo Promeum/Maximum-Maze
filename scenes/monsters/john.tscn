@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://de3ydsmc41qh5"]
+
+[ext_resource type="Script" path="res://scenes/monsters/john.gd" id="1_rb8y7"]
+[ext_resource type="Texture2D" uid="uid://dnyduvsjvxyar" path="res://assets/monsters/2john.png" id="2_0034w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3j85"]
+size = Vector2(14, 14)
+
+[node name="Monster" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_rb8y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2.38419e-07, 2.38419e-07)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0034w")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_r3j85")
