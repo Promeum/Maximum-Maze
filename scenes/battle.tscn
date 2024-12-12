@@ -1,20 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq3qhyoiica44"]
+[gd_scene load_steps=10 format=3 uid="uid://cq3qhyoiica44"]
 
 [ext_resource type="Script" path="res://scenes/battle.gd" id="1_63ir4"]
+[ext_resource type="Texture2D" uid="uid://nr76d2sntbny" path="res://assets/MaximumBattleASsets-Placeholdersprites/Battle3-7.png.png" id="2_1a7t3"]
 [ext_resource type="PackedScene" uid="uid://dh14wmw2ruodt" path="res://scenes/player_battle.tscn" id="2_docfo"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v88ew"]
-size = Vector2(1280, 768)
+[ext_resource type="Texture2D" uid="uid://b1p7e3ea7kh4t" path="res://assets/MaximumBattleASsets-Placeholdersprites/Battle3-8.png.png" id="3_5k4dp"]
 
 [sub_resource type="Curve2D" id="Curve2D_sbd1j"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 230, 200, 0, 0, 0, 0, 230, 316, 0, 0, 0, 0, 230, 433, 0, 0, 0, 0, 230, 550, 0, 0, 0, 0, 230, 700)
+"points": PackedVector2Array(0, 0, 0, 0, 230, 200, 0, 0, 0, 0, 230, 307.542, 0, 0, 0, 0, 230, 357.115, 0, 0, 0, 0, 230, 390.165, 0, 0, 0, 0, 230, 433, 0, 0, 0, 0, 230, 550, 0, 0, 0, 0, 230, 700)
 }
-point_count = 5
+point_count = 7
 
 [sub_resource type="Curve2D" id="Curve2D_4wiuv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 460, 200, 0, 0, 0, 0, 460, 316, 0, 0, 0, 0, 460, 433, 0, 0, 0, 0, 460, 550, 0, 0, 0, 0, 460, 700)
+"points": PackedVector2Array(0, 0, 0, 0, 464, 192, 0, 0, 0, 0, 464, 344, 0, 0, 0, 0, 464, 448, 0, 0, 0, 0, 460, 550, 0, 0, 0, 0, 460, 700)
 }
 point_count = 5
 
@@ -32,7 +31,7 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_iqu6i"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 230, 550, 0, 0, 0, 0, 460, 550, 0, 0, 0, 0, 691, 550, 0, 0, 0, 0, 921, 550)
+"points": PackedVector2Array(0, 0, 0, 0, 230, 550, 0, 0, 0, 0, 456, 552, 0, 0, 0, 0, 691, 550, 0, 0, 0, 0, 921, 550)
 }
 point_count = 4
 
@@ -40,9 +39,17 @@ point_count = 4
 script = ExtResource("1_63ir4")
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.286275, 1, 0.286275, 1)
-position = Vector2(576, 320)
-texture = SubResource("PlaceholderTexture2D_v88ew")
+position = Vector2(576, 324)
+scale = Vector2(0.9, 0.84375)
+texture = ExtResource("2_1a7t3")
+
+[node name="ColorRect" type="TextureRect" parent="Background"]
+offset_left = -640.0
+offset_top = -384.0
+offset_right = 640.0
+offset_bottom = 384.0
+texture = ExtResource("3_5k4dp")
+metadata/_edit_use_anchors_ = true
 
 [node name="BulletContainer" type="Node" parent="."]
 
@@ -57,6 +64,8 @@ texture = SubResource("PlaceholderTexture2D_v88ew")
 [node name="BulletPaths" type="Node" parent="."]
 
 [node name="BulletPath1" type="Path2D" parent="BulletPaths"]
+position = Vector2(-639.982, 22.2208)
+scale = Vector2(3.99992, 0.968256)
 curve = SubResource("Curve2D_sbd1j")
 
 [node name="BulletPath2" type="Path2D" parent="BulletPaths"]
@@ -76,12 +85,13 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
 [node name="Player" parent="." instance=ExtResource("2_docfo")]
-position = Vector2(-296, 544)
+position = Vector2(-280, 544)
 scale = Vector2(7, 7)
 
 [node name="AttackTimer" type="Timer" parent="."]

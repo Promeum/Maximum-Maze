@@ -10,7 +10,7 @@ class_name PlayerBattle extends CharacterBody2D
 @export var block_time: float = 0.5
 
 func _ready() -> void:
-	set_scale(Vector2(1,1) * GlobalVariables.BATTLE_SCALE / sprite.texture.get_size())
+	set_scale(Vector2(1,1) * GlobalVariables.BATTLE_SCALE / sprite.texture.get_size() / 3)
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("battle_left"):

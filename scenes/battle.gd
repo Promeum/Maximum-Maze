@@ -61,7 +61,7 @@ func place_attack(idx: int, type: String, damage: int = -1, crit_chance: float =
 	if idx not in range(0,4):
 		return false
 	
-	var attack_scene: Attack = GlobalVariables.attack_scene_catalouge.get(type).packed_scene.instantiate()
+	var attack_scene: Attack = attack.packed_scene.instantiate()
 	
 	attack_scene.type = type
 	attack_scene.damage = damage if damage != -1 else attack.default_damage

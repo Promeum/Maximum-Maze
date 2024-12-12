@@ -231,17 +231,16 @@ func spawn_monsters(monsters_to_spawn: int) -> void:
 		monsters_spawned += int(place_monster(positions_tried[-1], GlobalVariables.monster_catalouge.keys().pick_random()))
 	#prints(monsters_spawned,"monsters spawned")
 
-func place_monster(pos: Vector2i, type: String, health: int = -1, strength: int = -1, weapon: String = '') -> bool:
+func place_monster(pos: Vector2i, type: String, health: int = -1, weapon: String = '') -> bool:
 	var monster: Dictionary
 	monster = GlobalVariables.monster_catalouge.get(type).duplicate(true)
 	if monster == null or grid[pos.y][pos.x].wall:
 		return false
 	
-	var monster_scene: Monster = GlobalVariables.monster_scene_catalouge.get(type).duplicate(true).packed_scene.instantiate()
+	var monster_scene: Monster = monster.packed_scene.instantiate()
 	
 	monster_scene.type = type
 	monster_scene.health = health
-	monster_scene.strength = strength
 	monster_scene.weapon_type = weapon
 	monster_scene.pos = pos
 	monster_scene.position = GlobalMethods.convert_to_map_position(pos)
@@ -262,7 +261,7 @@ func move_player():
 				'b': player.velocity = Vector2(0,GlobalVariables.MAZE_SCALE*GlobalMethods.maze_player_speed())
 				'l': player.velocity = Vector2(-GlobalVariables.MAZE_SCALE*GlobalMethods.maze_player_speed(),0)
 				'r': player.velocity = Vector2(GlobalVariables.MAZE_SCALE*GlobalMethods.maze_player_speed(),0)
-			#player.set_direction(destination.direction)
+			player.set_direction(destination.direction)
 		player_pos = Vector2i(destination.x, destination.y)
 		
 		GlobalVariables.player_progress += 1
