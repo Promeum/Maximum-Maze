@@ -24,10 +24,10 @@ func _on_area_entered(area: Area2D) -> void:
 		print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
 		if not blocking and not attacked:
 			if randf() < parent.weapon.crit_chance:
-				#health -= parent.weapon.damage * 2
+				health -= parent.weapon.damage * 2
 				print('health -%s -- Crit!' % (parent.weapon.damage*2))
 				return
-			#health -= parent.weapon.damage
+			health -= parent.weapon.damage
 			print('health -%s!' % parent.weapon.damage)
 			prints("health:",health)
 			if health <= 0:
