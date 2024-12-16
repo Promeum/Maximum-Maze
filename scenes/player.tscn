@@ -14,10 +14,6 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_mvcbg")
 
-[node name="WeaponPoint" type="Marker2D" parent="."]
-
-[node name="SwordDebugWeapon" parent="WeaponPoint" instance=ExtResource("2_27hx2")]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.17233e-07, 4.17233e-07)
 texture = SubResource("PlaceholderTexture2D_ckpe6")
@@ -28,5 +24,10 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_8jnck")
+
+[node name="WeaponPoint" type="Marker2D" parent="."]
+position = Vector2(4, 4)
+
+[node name="SwordDebugWeapon" parent="WeaponPoint" instance=ExtResource("2_27hx2")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

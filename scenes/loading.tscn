@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bddavpnaor388"]
+
+[ext_resource type="Script" path="res://scenes/loading.gd" id="1_by17u"]
+
+[sub_resource type="Gradient" id="Gradient_m7552"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gqq1k"]
+gradient = SubResource("Gradient_m7552")
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_by17u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_gqq1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "loading"

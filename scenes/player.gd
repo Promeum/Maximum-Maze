@@ -54,21 +54,21 @@ func _on_area_entered(area: Area2D) -> void:
 			
 			#area.modulate = Color8(255,255,255)
 
-#func set_direction(direction: String):
-	#if direction not in ['t', 'b', 'l', 'r']:
-		#push_error("move_monster has invalid direction! direction: %s" % direction)
-		#return false
-	#
-	#match direction:
-		#'t': pass
-		#'b': pass
-		#'l':
-			#weapon_point.set_position(Vector2i(-4,4))
-			#weapon_point.get_child(0).set_scale(Vector2i(-1,1))
-		#'r':
-			#weapon_point.set_position(Vector2i(4,4))
-			#weapon_point.get_child(0).set_scale(Vector2i(1,1))
-	#return true
+func set_direction(direction: String):
+	if direction not in ['t', 'b', 'l', 'r']:
+		push_error("move_monster has invalid direction! direction: %s" % direction)
+		return false
+	
+	match direction:
+		't': pass
+		'b': pass
+		'l':
+			weapon_point.set_position(Vector2i(-4,4))
+			weapon_point.get_child(0).set_scale(Vector2i(-1,1))
+		'r':
+			weapon_point.set_position(Vector2i(4,4))
+			weapon_point.get_child(0).set_scale(Vector2i(1,1))
+	return true
 
 func _on_attack_pressed():
 	if not blocking and not attacked:
